@@ -1,0 +1,114 @@
+:root {
+  --lightSalmon: #fae8a0;
+  --lightSalmonBorder: #fad957;
+}
+#nav-container {
+  position: fixed;
+  left: 0%;
+  top: 0%;
+  width: 100vw;
+  height: 12vh;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  border: 1px solid transparent;
+  justify-content: end;
+  z-index: 500;
+  border-bottom: 1px solid black;
+}
+#nav-container > .options {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  align-self: flex-end;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.nav-item {
+  font-size: 2em;
+  color: black;
+  text-decoration: none;
+  font-family: "Kanit", sans-serif;
+  padding: 2px;
+}
+.nav-item:hover {
+  font-weight: 800;
+  text-shadow: 5px 5px 5px 50px black;
+}
+.icon {
+  width: 25px;
+}
+.icon > img {
+  width: 100%;
+  height: 100%;
+}
+#signIn {
+  font-size: 2.5em;
+  max-width: 25%;
+  background-color: white;
+  color: black;
+  border-radius: 15px;
+  font-weight: 300;
+  border: 2px solid var(--lightSalmonBorder);
+  white-space: nowrap;
+}
+#signIn:hover,
+.icon:hover {
+  transform: scale(1.01);
+}
+#header {
+  position: absolute;
+  top: 12vh;
+  left: 0%;
+  width: 100%;
+  height: 50vh;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#header > .anouncement {
+  position: relative;
+  width: 48%;
+  height: 100%;
+  background-color: var(--lightSalmon);
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+  justify-content: center;
+  padding: 10px;
+}
+.anouncement > #title_display {
+  font-size: 4em;
+  font-family: "Bebas Neue", sans-serif;
+}
+.browseItem {
+  border: 1px solid black;
+  color: white;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: black;
+  font-size: 1.5em;
+  font-family: "Source Code Pro", monospace;
+  margin: 15px;
+}
+.img {
+  position: relative;
+  width: 48%;
+  height: 90%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3em;
+  font-weight: 800;
+  margin-right: 2%;
+  border-radius: 5px;
+}
+#header > .img {
+  border: 2px solid black;
+  border-radius: 0;
+  border-top: 1px solid transparent;
+  border-left: 1px solid transparent;
+}
