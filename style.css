@@ -25,6 +25,7 @@
   align-items: center;
   justify-content: space-evenly;
 }
+.catalogOptions > a,
 .nav-item {
   font-size: 2em;
   color: black;
@@ -32,6 +33,36 @@
   font-family: "Kanit", sans-serif;
   padding: 2px;
 }
+#catalog {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+}
+
+.catalogOptions {
+  display: none;
+  position: relative;
+  background-color: white;
+  width: 25%;
+  z-index: 1;
+  align-self: flex-start;
+  border: 1px solid black;
+}
+.catalogOptions > a {
+  display: block;
+  padding: 5px 15px 5px 15px;
+  font-size: 25px;
+}
+.catalogOptions > a:hover {
+  background-color: black;
+  color: white;
+}
+.activeDrop {
+  display: block;
+}
+
 .nav-item:hover {
   font-weight: 800;
   text-shadow: 5px 5px 5px 50px black;
@@ -92,6 +123,10 @@
   font-size: 1.5em;
   font-family: "Source Code Pro", monospace;
   margin: 15px;
+  cursor: pointer;
+}
+.browseItem:hover {
+  transform: scale(1.01);
 }
 .img {
   position: relative;
