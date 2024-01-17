@@ -108,11 +108,11 @@ popularCatalogItems.forEach((data, index) => {
         }
     })
 
-    let $item = $('<a>').addClass('price').attr("target", "_blank").attr('href', "./item/previewItem.html").html('$' + data.price).appendTo($cardContainer);
+    let $item = $('<a>').addClass('price').attr("target", "_blank").attr('href', "/bWebsite/item/previewItem.html").html('$' + data.price).appendTo($cardContainer);
     $item.on('click', function() {
         localStorage.clear()
         localStorage.setItem("currentItem",  JSON.stringify(data));
-        window.location.href('./item/previewItem.html');
+        window.location.href('/bWebsite/item/previewItem.html');
     })
 })
 
