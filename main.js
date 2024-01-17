@@ -13,7 +13,7 @@ function catalogDrop() {
         
     })
 }
-var popularCatalogItems = [
+const popularCatalogItems = [
     {
         name: "White Tank Top Kids Shirt",
         image: "data:,",
@@ -89,7 +89,6 @@ var popularCatalogItems = [
         price: "8.99 - Kid's"
     },
 ]
-
 popularCatalogItems.forEach((data, index) => {
     let $cardContainer = $('<div>').addClass('cardContainer').appendTo('#topPicks');
 
@@ -109,7 +108,12 @@ popularCatalogItems.forEach((data, index) => {
         }
     })
 
-    $('<div>').addClass('price').text('$' + data.price).appendTo($cardContainer);
+    let $item = $('<a>').addClass('price').attr("target", "_blank").attr('href', "/item/previewItem.html").html('$' + data.price).appendTo($cardContainer);
+    $item.on('click', function() {
+        localStorage.clear()
+        localStorage.setItem("currentItem",  JSON.stringify(data));
+        window.location.href('/item/previewItem.html');
+    })
 })
 
 $('[type=file]').on('click', function() {

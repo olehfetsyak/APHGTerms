@@ -3,6 +3,9 @@
   --lightSalmonBorder: #fad957;
   --grey: #e3e3e3;
 }
+html {
+  scroll-behavior: smooth;
+}
 body {
   overflow-x: hidden;
 }
@@ -278,11 +281,12 @@ input[type="file"] {
 .price {
   position: relative;
   width: 100%;
-  height: 10%;
-  font-size: 2em;
+  height: 3%;
+  font-size: 1.3em;
   display: flex;
   align-items: center;
   padding: 25px;
+  color: black;
 }
 .cardItem {
   display: none;
@@ -291,7 +295,7 @@ input[type="file"] {
   border-radius: 5px;
 }
 .active {
-  border: 3px solid black;
+  border: 3px solid black !important;
 }
 .red {
   background-color: red;
