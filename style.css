@@ -1,0 +1,67 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.flashcard-container {
+  position: absolute;
+  top: 10vh;
+  height: 30vh;
+  width: 50vw;
+  max-width: 700px;
+  background-color: white;
+  border: 3px solid black;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  -moz-user-select: none;
+  font-size: 25px;
+}
+.flashcard {
+  width: 75%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cardNumber {
+  position: relative;
+  width: 10vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.unit-container {
+  position: absolute;
+  top: 50vh;
+  width: 80vw;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  text-align: center;
+}
+#chooseUnit,
+.units {
+  position: relative;
+  margin: 2%;
+  width: 20%;
+  font-size: 30px;
+  border: 2px solid black;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.units {
+  display: none;
+}
+#chooseUnit:hover {
+  cursor: pointer;
+}
+#chooseUnit:active {
+  box-shadow: none;
+}
