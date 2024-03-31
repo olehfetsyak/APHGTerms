@@ -22,9 +22,6 @@ function getQATerms() {
 
 function checkAmountOfTerms(terms, unit) {
     // terms = promised object, unit = integer
-    //
-    // Example use:
-    // console.log(checkAmountOfTerms(getQATerms(), 4));
     return Object.keys(terms["Unit" + unit]).length;
 }
 
@@ -39,9 +36,11 @@ function switchTerm() {
 }
 
 function currentFlashCard(vocabSet, unit, termNum) {
+    // Vocab # / All the Vocab 
     document.getElementById("termCount").innerHTML = `${termNum + 1} / ${Object.keys(vocabSet["Unit" + unit]).length}`;
 }
 function chooseNewUnit() {
+    // Switch between Units of Vocab
     return new Promise((resolve) => {
         $("#chooseUnit").css("display", "none");
         $(".units").css("display", "flex");
@@ -56,10 +55,12 @@ function chooseNewUnit() {
 }
 
 function leftArrow(currentTerm) {
+    // Go back a card
     return (currentTerm - 1 < 0) ? 0 : currentTerm - 1;
 }
 
 function rightArrow(currentTerm, vocabSet, unit) {
+    // Go forward a card
     let n = Object.keys(vocabSet["Unit" + unit]).length - 1;
     return (currentTerm + 1 > n) ? n : currentTerm +1;
 }

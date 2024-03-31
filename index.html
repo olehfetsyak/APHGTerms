@@ -2,34 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>APHG Cumilative Terms</title>
     <link href="style.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
-    <container class="cardNumber">
-        <img src="icons/arrow-left.svg" id="leftArrow" width="25px">
-        <div id="termCount" user-select="none"></div>
-        <img src="icons/arrow-right.svg" id="rightArrow" width="25px">
-    </container>
-    <div class="flashcard-container" onclick="switchTerm();">
-        <div class="flashcard">
-            <div id="term">
-            </div>
-            <div id="definition" hidden>
+    <container class="contentContainer">
+        <container class="cardNumber">
+            <img src="icons/arrow-left.svg" id="leftArrow" width="25px">
+            <div id="termCount" user-select="none"></div>
+            <img src="icons/arrow-right.svg" id="rightArrow" width="25px">
+        </container>
+        <div class="flashcard-container" onclick="switchTerm();">
+            <div class="flashcard">
+                <div id="term">
+                </div>
+                <div id="definition" hidden>
+                </div>
             </div>
         </div>
-    </div>
-    <container class="unit-container">
-        <div id="chooseUnit">Choose Unit</div>
-        <div id="unit1" class="units">Unit 1</div>
-        <div id="unit2" class="units">Unit 2</div>
-        <div id="unit3" class="units">Unit 3</div>
-        <div id="unit4" class="units">Unit 4</div>
-        <div id="unit5" class="units">Unit 5</div>
-        <div id="unit6" class="units">Unit 6</div>
-        <div id="unit7" class="units">Unit 7</div>
+        <container class="unit-container">
+            <div id="chooseUnit">Choose Unit</div>
+            <div id="unit1" class="units">Unit 1</div>
+            <div id="unit2" class="units">Unit 2</div>
+            <div id="unit3" class="units">Unit 3</div>
+            <div id="unit4" class="units">Unit 4</div>
+            <div id="unit5" class="units">Unit 5</div>
+            <div id="unit6" class="units">Unit 6</div>
+            <div id="unit7" class="units">Unit 7</div>
+        </container>
+        <container class="startTest-container">
+            <div id="startTest">Test your Knowledge</div>
+        </container>
     </container>
     <script src="script.js"></script>
 </body>
