@@ -1,4 +1,14 @@
-.contentContainer {
+body {
+  overflow-x: hidden;
+}
+[hidden] {
+  display: none !important;
+}
+hr {
+  width: 50vw;
+}
+.content-container,
+.formTest-container {
   position: absolute;
   left: 0%;
   top: 0%;
@@ -14,7 +24,6 @@
   height: 30vh;
   width: 50vw;
   left: 0%;
-  max-width: 700px;
   background-color: white;
   border: 3px solid black;
   border-radius: 15px;
@@ -54,6 +63,7 @@
 .startTest-container,
 .cardNumber {
   margin-top: 2vh;
+  z-index: 10;
 }
 
 #chooseUnit,
@@ -94,4 +104,57 @@
   margin: 0 !important;
   width: auto;
   padding: 7px;
+}
+#numberOfQuestions {
+  border: 2px solid #fdd835;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  outline: none;
+}
+.ceSwitch-btn,
+#beginTest {
+  position: relative;
+  text-align: center;
+  background-color: #fcfc83;
+  border: 2px solid black;
+  border-radius: 8px;
+  font-weight: 500;
+  padding: 10px;
+  margin: 2%;
+}
+#beginTest {
+  font-size: 1.7em;
+}
+.ceSwitch-btn {
+  font-size: 1.5em;
+}
+.ceSwitch-btn:disabled,
+.ceSwitch-btn[disabled] {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+#beginTest:hover,
+#beginTest:focus,
+.ceSwitch-btn:hover,
+.ceSwitch-btn:focus {
+  background-color: #ffffea;
+}
+input[type="radio"] {
+  width: 2em;
+  height: 2em;
+}
+.questionHeader {
+  font-weight: normal;
+  font-size: 2em;
+}
+.choice-wrapper {
+  width: 50%;
+}
+form {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
 }

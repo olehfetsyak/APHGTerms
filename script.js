@@ -65,6 +65,41 @@ function rightArrow(currentTerm, vocabSet, unit) {
     return (currentTerm + 1 > n) ? n : currentTerm +1;
 }
 
+function formatTest(vocabSet, unit) {
+    let n = Object.keys(vocabSet["Unit" + unit]).length;
+
+    $(".formTest-container").removeAttr("hidden");
+    $(".content-container").attr("hidden", true);
+
+    $("#numberOfQuestions").val(n);
+}
+
+function numberInputOverflow(highestNum, elem) {
+    if ($(elem).val() > highestNum) {
+        $(elem).val(highestNum);
+    }
+    if ($(elem).val() < 0) {
+        $(elem).val(0);
+    }
+}
+
+function checkTestValid() {
+    if ($("input[name='ceSwitch']:checked").length == 0) {
+        return false;
+    }
+    if ($("input[name='typeOfTest']:checked").length == 0) {
+        return false;
+    }
+    if ($("input[name='testUnit']:checked").length == 0) {
+        return false;
+    }
+    return true;
+}
+
+function loadTest() {
+    alert("Work In progress");
+}
+
 async function main() {
     let vocabSet = await getQATerms();
     let currentUnit = 1;
@@ -96,6 +131,22 @@ async function main() {
         updateUI();
     })
 
+    document.getElementById("numberOfQuestions").addEventListener("input", () => {
+        numberInputOverflow(Object.keys(vocabSet["Unit" + currentUnit]).length, "#numberOfQuestions")
+    })
+
+    document.getElementById("startTest").addEventListener("click", () => {
+        formatTest(vocabSet, currentUnit);
+    })
+
+    document.getElementById("beginTest").addEventListener("click", () => {
+        if (checkTestValid()) {
+            loadTest();
+        } else {
+            alert("Choose all the inputs properly");
+        }
+    })
+
     updateUI();
     currentFlashCard(vocabSet, currentUnit, currentTerm);
 }
@@ -103,9 +154,6 @@ async function main() {
 main();
 
 /*
-
-
-
  To-Do List : {
     Tin : [
         - Style the flashcard-container (lidally spin when you click it)

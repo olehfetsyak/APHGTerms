@@ -8,7 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
-    <container class="contentContainer">
+    <container class="content-container">
         <container class="cardNumber">
             <img src="icons/arrow-left.svg" id="leftArrow" width="25px">
             <div id="termCount" user-select="none"></div>
@@ -35,6 +35,37 @@
         <container class="startTest-container">
             <div id="startTest">Test your Knowledge</div>
         </container>
+    </container>
+    <container class="formTest-container" hidden="true">
+        <h1>Format Your Test</h1>
+        <form onsubmit="event.preventDefault();">
+            <div class="choice-wrapper">
+                <label class="questionHeader">Number of Questions: </label>
+                <input type="number" min="0" step="1" value="" id="numberOfQuestions" name="numberOfQuestions" maxlength="4" size="4"><br>
+            </div>
+            <hr>
+            <div class="choice-wrapper">
+                <label class="questionHeader">Cumilative Test: </label>
+                <input type="radio" name="ceSwitch" value="true"><br>
+                <label class="questionHeader"><s>Essential Test: </s></label>
+                <input type="radio" name="ceSwitch" value="false" disabled>
+            </div>
+            <hr>
+            <div class="choice-wrapper">
+                <label class="questionHeader">Multiple Choice Test: </label>
+                <input type="radio" name="typeOfTest" value="true"><br>
+                <label class="questionHeader">Written Test: </label>
+                <input type="radio" name="typeOfTest" value="false">
+            </div>
+            <hr>
+            <div class="choice-wrapper">
+                <label class="questionHeader">Current Selected Unit: </label>
+                <input type="radio" name="testUnit" value="true"><br>
+                <label class="questionHeader">All Units: </label>
+                <input type="radio" name="testUnit" value="false">
+            </div>
+            <button id="beginTest">Begin</button>
+        </form>
     </container>
     <script src="script.js"></script>
 </body>
