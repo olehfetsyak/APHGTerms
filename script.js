@@ -118,10 +118,14 @@ async function main() {
 
     document.getElementById("leftArrow").addEventListener("click", () => {
         currentTerm = leftArrow(currentTerm);
+        document.getElementById("term").hidden = false;
+        document.getElementById("definition").hidden = true;
         updateUI();
     })
     document.getElementById("rightArrow").addEventListener("click", () => {
         currentTerm = rightArrow(currentTerm, vocabSet, currentUnit);
+        document.getElementById("term").hidden = false;
+        document.getElementById("definition").hidden = true;
         updateUI();
     })
     
@@ -129,6 +133,10 @@ async function main() {
         currentUnit = await chooseNewUnit(vocabSet);
         currentTerm = 0;
         updateUI();
+    })
+
+    $(".flashcard-container").on("click", function() {
+        switchTerm();
     })
 
     $(".returnToMain").on("click", function() {
