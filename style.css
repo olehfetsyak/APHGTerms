@@ -42,19 +42,21 @@ hr {
 }
 .cardNumber {
   position: relative;
-  width: 10vw;
+  width: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  font-size: 2em;
+}
+#termCount {
+  margin: 2vw;
 }
 .unit-container {
   position: relative;
   left: 0vw;
-  min-width: 1080px;
   width: 50vw;
   display: flex;
   justify-content: space-evenly;
-  align-items: center;
   flex-wrap: wrap;
   text-align: center;
 }
@@ -71,15 +73,18 @@ hr {
 .units {
   position: relative;
   margin: 2%;
-  width: 20%;
+  width: auto;
   font-size: 30px;
   border: 2px solid black;
   padding: 5px;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  text-align: center;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-wrap: wrap;
+}
+#chooseUnit {
+  width: auto;
 }
 .units {
   display: none;
@@ -113,6 +118,7 @@ hr {
   outline: none;
 }
 .ceSwitch-btn,
+.returnToMain,
 #beginTest {
   position: relative;
   text-align: center;
@@ -123,7 +129,8 @@ hr {
   padding: 10px;
   margin: 2%;
 }
-#beginTest {
+#beginTest,
+.returnToMain {
   font-size: 1.7em;
 }
 .ceSwitch-btn {
@@ -141,7 +148,8 @@ hr {
 .ceSwitch-btn:focus {
   background-color: #ffffea;
 }
-input[type="radio"] {
+input[type="radio"],
+input[type="checkbox"] {
   width: 2em;
   height: 2em;
 }

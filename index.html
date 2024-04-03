@@ -9,11 +9,11 @@
 </head>
 <body>
     <container class="content-container">
-        <container class="cardNumber">
+        <div class="cardNumber">
             <img src="icons/arrow-left.svg" id="leftArrow" width="25px">
             <div id="termCount" user-select="none"></div>
             <img src="icons/arrow-right.svg" id="rightArrow" width="25px">
-        </container>
+        </div>
         <div class="flashcard-container" onclick="switchTerm();">
             <div class="flashcard">
                 <div id="term">
@@ -22,7 +22,7 @@
                 </div>
             </div>
         </div>
-        <container class="unit-container">
+        <div class="unit-container">
             <div id="chooseUnit">Choose Unit</div>
             <div id="unit1" class="units">Unit 1</div>
             <div id="unit2" class="units">Unit 2</div>
@@ -31,10 +31,10 @@
             <div id="unit5" class="units">Unit 5</div>
             <div id="unit6" class="units">Unit 6</div>
             <div id="unit7" class="units">Unit 7</div>
-        </container>
-        <container class="startTest-container">
+        </div>
+        <div class="startTest-container">
             <div id="startTest">Test your Knowledge</div>
-        </container>
+        </div>
     </container>
     <container class="formTest-container" hidden="true">
         <h1>Format Your Test</h1>
@@ -59,13 +59,36 @@
             </div>
             <hr>
             <div class="choice-wrapper">
-                <label class="questionHeader">Current Selected Unit: </label>
+                <!--<label class="questionHeader">Current Selected Unit: </label>
                 <input type="radio" name="testUnit" value="true"><br>
                 <label class="questionHeader">All Units: </label>
-                <input type="radio" name="testUnit" value="false">
+                <input type="radio" name="testUnit" value="false">-->
+                <label class="questionHeader">Choose the tested Units: </label><br><br>
+
+                <input type="checkbox" name="unitSelection" value="1">
+                <label class="questionHeader">Unit 1</label><br>
+                <input type="checkbox" name="unitSelection" value="2">
+                <label class="questionHeader">Unit 2</label><br>
+                <input type="checkbox" name="unitSelection" value="3">
+                <label class="questionHeader">Unit 3</label><br>
+                <input type="checkbox" name="unitSelection" value="4">
+                <label class="questionHeader">Unit 4</label><br>
+                <input type="checkbox" name="unitSelection" value="5">
+                <label class="questionHeader">Unit 5</label><br>
+                <input type="checkbox" name="unitSelection" value="6">
+                <label class="questionHeader">Unit 6</label><br>
+                <input type="checkbox" name="unitSelection" value="7">
+                <label class="questionHeader">Unit 7</label>
             </div>
-            <button id="beginTest">Begin</button>
+            <div class="choice-wrapper">
+                <button class="returnToMain">Back</button>
+                <button id="beginTest">Begin</button>
+            </div>
         </form>
+    </container>
+    <container class="gradeTest-container" hidden="true">
+        <h1>Work In Progress</h1>
+        <button class="returnToMain">Back</button>
     </container>
     <script src="script.js"></script>
 </body>

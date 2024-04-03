@@ -5,6 +5,7 @@
         - TinL
 
 */
+
 function getQATerms() {
     return new Promise((resolve) => {
         fetch("qaSet.json")
@@ -65,13 +66,9 @@ function rightArrow(currentTerm, vocabSet, unit) {
     return (currentTerm + 1 > n) ? n : currentTerm +1;
 }
 
-function formatTest(vocabSet, unit) {
-    let n = Object.keys(vocabSet["Unit" + unit]).length;
-
-    $(".formTest-container").removeAttr("hidden");
-    $(".content-container").attr("hidden", true);
-
-    $("#numberOfQuestions").val(n);
+function switchTab(currentTab) {
+    $("container[class$='-container']").attr("hidden", true);
+    $("." + currentTab).removeAttr("hidden");
 }
 
 function numberInputOverflow(highestNum, elem) {
@@ -85,19 +82,20 @@ function numberInputOverflow(highestNum, elem) {
 
 function checkTestValid() {
     if ($("input[name='ceSwitch']:checked").length == 0) {
-        return false;
+        return "Missing Cumulative or Essential choice";
     }
     if ($("input[name='typeOfTest']:checked").length == 0) {
-        return false;
+        return "Missing Type of Test";
     }
-    if ($("input[name='testUnit']:checked").length == 0) {
-        return false;
+    if ($("input[type=checkbox][name='unitSelection']:checked").length == 0) {
+        return "Missing Selected Units";
     }
+
     return true;
 }
 
-function loadTest() {
-    alert("Work In progress");
+function loadTest(testOnUnits, vocabSet, totalQuestions) {
+    alert("Work In Progress");
 }
 
 async function main() {
@@ -106,6 +104,8 @@ async function main() {
     let currentTerm = 0;
     let term = Object.keys(vocabSet["Unit" + currentUnit])[currentTerm];
     let definition = Object.values(vocabSet["Unit" + currentUnit])[currentTerm];
+    let testOnUnits = [];
+    let totalQuestions = $("#numberOfQuestions").val();
 
     function updateUI() {
         term = Object.keys(vocabSet["Unit" + currentUnit])[currentTerm];
@@ -131,21 +131,53 @@ async function main() {
         updateUI();
     })
 
-    document.getElementById("numberOfQuestions").addEventListener("input", () => {
-        numberInputOverflow(Object.keys(vocabSet["Unit" + currentUnit]).length, "#numberOfQuestions")
+    $(".returnToMain").on("click", function() {
+        switchTab("content-container");
     })
 
+    document.getElementById("numberOfQuestions").addEventListener("input", () => {
+        let maxQuestionLength = 0;
+
+        $("input[type=checkbox][name=unitSelection]").each(function() {
+            if ($(this).is(':checked')) {
+                maxQuestionLength += Object.keys(vocabSet["Unit" + $(this).val()]).length;
+            }
+        });
+
+        numberInputOverflow(maxQuestionLength, "#numberOfQuestions")
+    })
+
+    $("input[type=checkbox][name=unitSelection]").on("input", function() {
+        let maxQuestionLength = 0;
+        testOnUnits = [];
+
+        $("input[type=checkbox][name=unitSelection]").each(function() {
+            if ($(this).is(':checked')) {
+                maxQuestionLength += Object.keys(vocabSet["Unit" + $(this).val()]).length;
+                testOnUnits += $(this).val();
+            }
+        })
+
+        $("#numberOfQuestions").val(maxQuestionLength);
+    })
+    
+
     document.getElementById("startTest").addEventListener("click", () => {
-        formatTest(vocabSet, currentUnit);
+        switchTab("formTest-container");
+        $("#numberOfQuestions").val(0);
     })
 
     document.getElementById("beginTest").addEventListener("click", () => {
-        if (checkTestValid()) {
-            loadTest();
+        if (checkTestValid() === true) {
+            totalQuestions = $("#numberOfQuestions").val();
+
+            loadTest(testOnUnits, vocabSet, totalQuestions);
+            switchTab("gradeTest-container");
         } else {
-            alert("Choose all the inputs properly");
+            alert("Error: " + checkTestValid());
         }
     })
+
 
     updateUI();
     currentFlashCard(vocabSet, currentUnit, currentTerm);
