@@ -80,6 +80,12 @@ function numberInputOverflow(highestNum, elem) {
     }
 }
 
+function randomint(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 function checkTestValid() {
     if ($("input[name='ceSwitch']:checked").length == 0) {
         return "Missing Cumulative or Essential choice";
@@ -94,8 +100,53 @@ function checkTestValid() {
     return true;
 }
 
-function loadTest(testOnUnits, vocabSet, totalQuestions) {
-    alert("Work In Progress");
+function shuffle(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+        let r = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[r]] = [arr[r], arr[i]];
+    }
+
+    return arr;
+}
+
+function loadTest(testOnUnits, vocabSet, totalQuestions, typeOfTest) {
+    let questions = [];
+
+    for (let unit of testOnUnits) {
+        unit = parseInt(unit);
+        questions.push(...Object.keys(vocabSet["Unit" + unit]));
+    }
+
+    questions = shuffle(questions).slice(0, totalQuestions);
+    let includedQ = new Set();
+
+    for (let term = 0; term < questions.length; term++) {//let term of questions) {
+        for (let unit in vocabSet) {
+            if (vocabSet[unit][questions[term]] != undefined && !includedQ.has(term)) {
+                includedQ.add(term);
+                let testQContainer = $("<div></div>")
+                    .addClass("testQ-container")
+                    .appendTo($(".gradeTest-container"));
+                $("<div></div>").text(questions[term]).addClass("testQ").appendTo(testQContainer);
+                $("<div></div>").addClass("question-number").appendTo(testQContainer);
+                
+
+                let answerContainer = $("<div></div>").addClass("answer-container").appendTo(testQContainer);
+                //$("<div></div>").text(vocabSet[unit][questions[term]]).addClass("answer").appendTo(answerContainer);
+                let answer = Math.floor(Math.random() * 4);
+                for (let i = 0; i < 4; i++) {
+                    if (i === answer) {
+                        $("<div></div>").html(vocabSet[unit][questions[term]]).addClass("answer").appendTo(answerContainer);
+                    } else {
+                        let randomUnit = "Unit" + randomint(1, 7);
+                        let n = Object.keys(vocabSet[randomUnit]).length - 1;
+                        let randomAnsw = vocabSet[randomUnit][Object.keys(vocabSet[randomUnit])[Math.floor(Math.random() * n)]];//vocabSet[randomUnit][vocabSet[randomUnit][Math.floor(Math.random() * n)]];
+                        $("<div></div>").html(randomAnsw).addClass("answer").appendTo(answerContainer);
+                    }
+                }
+            }
+        }
+    }
 }
 
 async function main() {
@@ -169,7 +220,6 @@ async function main() {
         $("#numberOfQuestions").val(maxQuestionLength);
     })
     
-
     document.getElementById("startTest").addEventListener("click", () => {
         switchTab("formTest-container");
         $("#numberOfQuestions").val(0);
@@ -179,7 +229,7 @@ async function main() {
         if (checkTestValid() === true) {
             totalQuestions = $("#numberOfQuestions").val();
 
-            loadTest(testOnUnits, vocabSet, totalQuestions);
+            loadTest(testOnUnits, vocabSet, totalQuestions, $("input[name='typeOfTest']:checked").val());
             switchTab("gradeTest-container");
         } else {
             alert("Error: " + checkTestValid());
