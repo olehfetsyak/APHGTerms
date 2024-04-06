@@ -6,6 +6,7 @@
     <title>APHG Cumilative Terms</title>
     <link href="style.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <container class="content-container">
@@ -59,10 +60,15 @@
             </div>
             <hr>
             <div class="choice-wrapper">
-                <!--<label class="questionHeader">Current Selected Unit: </label>
-                <input type="radio" name="testUnit" value="true"><br>
-                <label class="questionHeader">All Units: </label>
-                <input type="radio" name="testUnit" value="false">-->
+                <label class="questionHeader">Terms or Definitions: </label><br><br>
+
+                <input type="checkbox" name="termvsdef" value="term">
+                <label class="questionHeader">Terms</label><br>
+                <input type="checkbox" name="termvsdef" value="definition">
+                <label class="questionHeader">Definitions</label><br>
+            </div>
+            <hr>
+            <div class="choice-wrapper">
                 <label class="questionHeader">Choose the tested Units: </label><br><br>
 
                 <input type="checkbox" name="unitSelection" value="1">
@@ -87,7 +93,30 @@
         </form>
     </container>
     <container class="gradeTest-container" hidden="true">
-        <h1>Work In Progress</h1>
+        <div class="sticky-container">
+            <button class="returnToMain">Back</button>
+            <button id="submitTest" class="submitTest">Submit Test</button>
+        </div>
+    </container>
+    <container class="testResult-container" hidden="true">
+        <h1>Test Results</h1>
+        <div class="test-wrapper">
+            <div id="correctNum"></div>
+            <div id="incorrectNum"></div>
+            <div id="missingNum"></div>
+            <div id="totalNum"></div>
+        </div>
+        <div class="test-wrapper">
+            <p>Correct</p>
+            <p>Incorrect</p>
+            <p>Missing</p>
+            <p>Total</p>
+        </div>
+        <div id="testResultBar">
+            <div class="correct"></div>
+            <div class="incorrect"></div>
+            <div class="empty"></div>
+        </div>
         <button class="returnToMain">Back</button>
     </container>
     <script src="script.js"></script>
