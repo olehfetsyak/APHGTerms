@@ -103,8 +103,8 @@ function numberInputOverflow(highestNum, elem) {
     if ($(elem).val() > highestNum) {
         $(elem).val(highestNum);
     }
-    if ($(elem).val() < 5) {
-        $(elem).val(5);
+    if ($(elem).val() < 0) {
+        $(elem).val(0);
     }
 }
 
@@ -143,6 +143,9 @@ function updateTestResult(correct, incorrect, missing, total) {
 }
 
 function checkTestValid() {
+    if ($("#numberOfQuestions") <= 0) {
+        return "Input a proper amount of questions";
+    }
     if ($("input[name='ceSwitch']:checked").length == 0) {
         return "Missing Cumulative or Essential choice";
     }
